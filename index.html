@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Logika Pro Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="start-screen" class="screen">
+            <h1>Coba di anukan</h1>
+            <div class="leaderboard-box">
+                <h3>🏆 Global Leaderboard</h3>
+                <ul id="leaderboard-list">
+                    <li>Memuat data...</li>
+                </ul>
+            </div>
+            <div class="login-box">
+                <input type="text" id="username" placeholder="Namamu biar aku knal" maxlength="15">
+                <p id="error-msg" class="error"></p>
+                <button onclick="startGame()" class="btn-main">Main Sekarang</button>
+            </div>
+        </div>
+
+        <div id="quiz-screen" class="screen hide">
+            <div class="game-header">
+                <div id="lives" class="lives-display">❤️❤️❤️</div>
+                <div class="timer-wrapper">
+                    <div id="timer-bar"></div>
+                </div>
+            </div>
+            <div id="stats-area" class="stats-badge">
+                📊 <span id="stats-percent">0</span>% orang benar
+            </div>
+            <h2 id="question">Memuat soal...</h2>
+            <div id="answer-buttons" class="btn-grid"></div>
+            <div id="controls-area" class="hide">
+                <button id="btn-explain" onclick="toggleExplanation()" class="btn-info">📖 Lihat Alasan</button>
+                <div id="explanation-box" class="hide">
+                    <p id="explanation-text"></p>
+                </div>
+                <button onclick="nextQuestion()" class="btn-next">Lanjut ➡</button>
+            </div>
+        </div>
+
+        <div id="end-screen" class="screen hide">
+            <h2>Permainan Selesai!</h2>
+            <div class="final-card">
+                <p>Skor Kamu</p>
+                <h1 id="score">0</h1>
+            </div>
+            <button onclick="location.reload()" class="btn-main">Kembali ke Menu</button>
+        </div>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import { getDatabase, ref, push, onValue, set, query, orderByChild, limitToLast } 
+      from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+      // Gunakan config dari screenshot (162) kamu
+      const firebaseConfig = {
+        apiKey: "AIzaSyDAj3zDHlLkCWFQfGAk8OZBd2IMCTscND0",
+        authDomain: "gamelogika-70f34.firebaseapp.com",
+        databaseURL: "https://gamelogika-70f34-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "gamelogika-70f34",
+        storageBucket: "gamelogika-70f34.firebasestorage.app",
+        messagingSenderId: "244808584234",
+        appId: "1:244808584234:web:c20f5c42b402b8c1578753",
+        measurementId: "G-8Y2WLX7TK4"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+
+      // Ekspos ke global window
+      window.db = database;
+      window.dbRef = ref;
+      window.dbPush = push;
+      window.dbOnValue = onValue;
+      window.dbSet = set;
+      window.dbQuery = query;
+      window.dbOrderBy = orderByChild;
+      window.dbLimit = limitToLast;
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
