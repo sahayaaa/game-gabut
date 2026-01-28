@@ -22,7 +22,7 @@ const questions = [
             { text: "Posisi Ketiga", correct: false },
             { text: "Menyerah", correct: false }
         ],
-        explanation: "kalau lu nyalip orang yang ada di posisi kedua, ya lu cuma geser dia doang. Lu sekarang yang jadi juara dua. Yang juara satu mah masih anteng di depan sana sambil dadah-dadah ke lu"
+        explanation: "kan nyalip yg kedua, jadi ya posisi kedua. Second choise kayak kamu. Izinnn"
     },
 
     {
@@ -268,3 +268,4 @@ window.adminReset = async function() {
         }
     }  else { alert("Salah!"); }
 }
+
